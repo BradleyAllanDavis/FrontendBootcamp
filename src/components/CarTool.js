@@ -1,9 +1,4 @@
-export const CarTool = () => {
-
-  const cars = [
-    { id: 1, make: 'Tesla', model: 'Model 3', year: 2019, color: 'Silver', price: 60000 },
-    { id: 2, make: 'Tesla', model: 'Model Y', year: 2021, color: 'Blue', price: 65000 },
-  ];
+export const CarTool = (props) => {
 
   return (
     <>
@@ -22,7 +17,7 @@ export const CarTool = () => {
           </tr>
         </thead>
         <tbody>
-          {cars.map(car => <tr key={car.id}>
+          {props.cars.map(car => <tr key={car.id}>
             <td>{car.id}</td>
             <td>{car.make}</td>
             <td>{car.model}</td>
