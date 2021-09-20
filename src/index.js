@@ -1,13 +1,10 @@
-import { createElement } from "react";
 import { render } from "react-dom";
 
-const HelloWorld3 = () => {
-  // return createElement('h1', null, 'Hello, World 3!');
-  return <h1>Hello, World!</h1>;
-};
+import { HelloWorld } from './components/HelloWorld';
+import { CarTool } from './components/CarTool';
 
-// render(createElement(HelloWorld3), document.querySelector('#root'));
-render(<HelloWorld3 />, document.querySelector('#root'));
+render(<HelloWorld />, document.querySelector('#root'));
+render(<CarTool />, document.querySelector('#CarTool'));
 
 
 
