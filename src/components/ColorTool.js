@@ -1,19 +1,23 @@
+import { useState } from 'react';
+
 export const ColorTool = (props) => {
 
-  // const colorListItems = [];
+  const [
+    colorForm, // state data
+    setColorForm, // function to update the state data and re-render
+  ] = useState({
+    name: '', hexcode: '',
+  });
 
-  // back in the 1980s
-  // for (let x = 0; x < colors.length; x++) {
-  //   colorListItems.push(<li key={colors[x].id}>{colors[x].name}</li>);
-  // }
+  const change = e => {
+    setColorForm({
+      ...colorForm, // spread operator to copy the properties from the original color form to the new color form
+      [ e.target.name ]: e.target.value,
+      // hexcode: e.target.value
+    }); // new object literal, so we have a new object reference saying the state change
+  };
 
-  // declarative approach, iterate over the items of an array and perform a side effect
-  // colors.forEach(color => {
-  //   colorListItems.push(<li key={color.id}>{color.name}</li>);
-  // });
-
-  // declarative, good semantic meaning, no side effect used
-  // const colorListItems = colors.map(color => <li key={color.id}>{color.name}</li>);
+  console.log(colorForm);
 
   return (
     <>
@@ -23,6 +27,17 @@ export const ColorTool = (props) => {
       <ul>
         {props.colors.map(color => <li key={color.id}>{color.name}</li>)}
       </ul>
+      <form>
+        <label>
+          Color Name:
+          <input type="text" name="name" value={colorForm.name} onChange={change} />
+        </label>
+        <label>
+          Color Hexcode:
+          <input type="text" name="hexcode" value={colorForm.hexcode} onChange={change} />
+        </label>
+        <button type="button">Add Color</button>
+      </form>
     </>
   );
 };
