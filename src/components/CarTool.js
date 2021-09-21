@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 export const CarTool = (props) => {
 
+  const [ cars, setCars ] = useState([ ...props.cars]);
+  
   const [
     carForm, // state data
     setCarForm, // function to update the state data and re-render
@@ -20,7 +22,21 @@ export const CarTool = (props) => {
     });
   };
 
-  console.log(carForm);
+  const addCar = () => {
+    setCars([
+      ...cars,
+      { ...carForm, id: Math.max(...cars.map(c => c.id), 0) + 1 },
+    ]);
+
+    setCarForm({
+      make: '',
+      model: '',
+      year: 1900,
+      color: '',
+      price: 0,
+    });
+  }
+
 
   return (
     <>
@@ -39,7 +55,7 @@ export const CarTool = (props) => {
           </tr>
         </thead>
         <tbody>
-          {props.cars.map(car => <tr key={car.id}>
+          {cars.map(car => <tr key={car.id}>
             <td>{car.id}</td>
             <td>{car.make}</td>
             <td>{car.model}</td>
@@ -70,7 +86,7 @@ export const CarTool = (props) => {
           Car Price:
           <input type="text" name="price" value={carForm.price} onChange={change} />
         </label>
-        <button type="button">Add Car</button>
+        <button type="button" onClick={addCar}>Add Car</button>
       </form>
     </>
   );

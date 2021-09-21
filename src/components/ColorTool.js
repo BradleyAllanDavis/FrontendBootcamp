@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 export const ColorTool = (props) => {
 
-  const [ colors, setColors ]= useState([ ...props.colors]);
+  const [ colors, setColors ] = useState([ ...props.colors]);
 
   const [
     colorForm, // state data
