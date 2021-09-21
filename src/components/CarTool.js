@@ -44,7 +44,7 @@ export const CarTool = (props) => {
   return (
     <>
       <ToolHeader header={headerName}/>
-      <CarTable cars={props.cars}/>
+      <CarTable cars={cars}/>
       <form>
         <label>
           Car Make:
