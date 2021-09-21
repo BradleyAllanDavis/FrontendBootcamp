@@ -57,5 +57,12 @@ export const CarForm = ({ buttonText, onSubmitCar }) => {
       <button type="button" onClick={submitCar}>{buttonText}</button>
     </form>
   );
+};
 
+CarForm.defaultProps = {
+  buttonText: 'Submit Car',
+};
+
+CarForm.propTypes = {
+  buttonText: PropTypes.string.isRequired,
 };
