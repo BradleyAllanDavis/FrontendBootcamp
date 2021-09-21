@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 export const ColorTool = (props) => {
 
+  const [ colors, setColors ]= useState([ ...props.colors]);
+
   const [
     colorForm, // state data
     setColorForm, // function to update the state data and re-render
@@ -17,7 +19,16 @@ export const ColorTool = (props) => {
     }); // new object literal, so we have a new object reference saying the state change
   };
 
-  console.log(colorForm);
+  const addColor = () => {
+    setColors([
+      ...colors,
+      { ...colorForm, id: Math.max(...colors.map(c => c.id), 0) + 1 },
+    ]);
+
+    setColorForm({
+      name: '', hexcode: '',
+    });
+  }
 
   return (
     <>
@@ -25,7 +36,7 @@ export const ColorTool = (props) => {
         <h1>Color Tool</h1>
       </header>
       <ul>
-        {props.colors.map(color => <li key={color.id}>{color.name}</li>)}
+        {colors.map(color => <li key={color.id}>{color.name}</li>)}
       </ul>
       <form>
         <label>
@@ -36,7 +47,7 @@ export const ColorTool = (props) => {
           Color Hexcode:
           <input type="text" name="hexcode" value={colorForm.hexcode} onChange={change} />
         </label>
-        <button type="button">Add Color</button>
+        <button type="button" onClick={addColor}>Add Color</button>
       </form>
     </>
   );
