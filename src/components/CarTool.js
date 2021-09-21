@@ -6,15 +6,18 @@ export const CarTool = (props) => {
     carForm, // state data
     setCarForm, // function to update the state data and re-render
   ] = useState({
-    make: '', model: '', year: '', color: '', price: '',
+    make: '',
+    model: '', 
+    year: 1900, 
+    color: '', 
+    price: 0,
   });
 
   const change = e => {
     setCarForm({
-      ...carForm, // spread operator to copy the properties from the original color form to the new color form
+      ...carForm,
       [ e.target.name ]: e.target.value,
-      // hexcode: e.target.value
-    }); // new object literal, so we have a new object reference saying the state change
+    });
   };
 
   console.log(carForm);
