@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ColorForm } from './ColorForm';
 import { ColorList } from './ColorList';
+import { ToolFooter } from './ToolFooter';
 import { ToolHeader } from './ToolHeader';
 
 export const ColorTool = (props) => {
@@ -22,6 +23,7 @@ export const ColorTool = (props) => {
       <ToolHeader header='ColorTool'/>
       <ColorList colors={colors}/>
       <ColorForm buttonText='Add Color' onSubmitColor={addColor} />
+      <ToolFooter footer='footer' />
     </>
   );
 };

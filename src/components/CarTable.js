@@ -1,6 +1,7 @@
 import { CarViewRow } from "./CarViewRow";
 
-export const CarTable = (props) => {
+export const CarTable = ({ cars, onDeleteCar }) => {
+
   return (
     <>
       <table>
@@ -12,11 +13,12 @@ export const CarTable = (props) => {
             <th>Year</th>
             <th>Color</th>
             <th>Price</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {props.cars.map(car =>
-            <CarViewRow key={car.id} car={car} />
+          {cars.map(car =>
+            <CarViewRow key={car.id} car={car} buttonText='Delete' onDeleteCar={onDeleteCar}/>
           )}
         </tbody>
       </table>

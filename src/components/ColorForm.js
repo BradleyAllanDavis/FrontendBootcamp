@@ -7,7 +7,8 @@ export const ColorForm = ({ buttonText, onSubmitColor }) => {
     colorForm, // state data
     setColorForm, // function to update the state data and re-render
   ] = useState({
-    name: '', hexcode: '',
+    name: '',
+    hexcode: '',
   });
 
   const change = e => {
