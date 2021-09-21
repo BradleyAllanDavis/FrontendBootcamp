@@ -32,11 +32,9 @@ export const ColorTool = (props) => {
     });
   }
   
-  const headerName = 'ColorTool';
-
   return (
     <>
-      <ToolHeader header={headerName}/>
+      <ToolHeader header='ColorTool'/>
       <ColorList colors={colors}/>
       <form>
         <label>

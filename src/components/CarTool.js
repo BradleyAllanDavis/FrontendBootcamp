@@ -39,11 +39,9 @@ export const CarTool = (props) => {
     });
   }
 
-  const headerName = 'CarTool';
-
   return (
     <>
-      <ToolHeader header={headerName}/>
+      <ToolHeader header='CarTool'/>
       <CarTable cars={cars}/>
       <form>
         <label>
