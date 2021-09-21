@@ -1,8 +1,8 @@
-export const ToolHeader = (props) => {
+export const ToolHeader = ({ header }) => {
   return (
     <>
       <header>
-        <h1>{props.header}</h1>
+        <h1>{header}</h1>
       </header>
     </>
   );
