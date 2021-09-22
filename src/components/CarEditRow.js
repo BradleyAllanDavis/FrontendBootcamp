@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
-
 import { carPropType } from "../prop-types/cars";
+import { useForm } from '../hooks/useForm';
 
 export const CarEditRow = ({
   car,
@@ -11,21 +10,14 @@ export const CarEditRow = ({
 
   const [
     carForm,
-    setCarForm,
-  ] = useState({
+    change,
+  ] = useForm({
     make: car.make,
     model: car.model, 
     year: car.year, 
     color: car.color, 
     price: car.price,
   });
-
-  const change = e => {
-    setCarForm({
-      ...carForm,
-      [ e.target.name ]: e.target.value,
-    });
-  };
 
   const saveCar = () => {
     onSaveCar({
