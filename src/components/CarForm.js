@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useForm } from '../hooks/useForm';
 
 export const CarForm = ({ buttonText, onSubmitCar }) => {
 
   const [
-    carForm, // state data
-    setCarForm, // function to update the state data and re-render
-  ] = useState({
+    carForm,
+    change,
+    resetForm,
+  ] = useForm({
     make: '',
     model: '', 
     year: 1900, 
@@ -14,22 +15,9 @@ export const CarForm = ({ buttonText, onSubmitCar }) => {
     price: 0,
   });
 
-  const change = e => {
-    setCarForm({
-      ...carForm,
-      [ e.target.name ]: e.target.value,
-    });
-  };
-
   const submitCar = () => {
     onSubmitCar({ ...carForm });
-    setCarForm({
-      make: '',
-      model: '', 
-      year: 1900, 
-      color: '', 
-      price: 0,
-    });
+    resetForm();
   };
 
   return (
