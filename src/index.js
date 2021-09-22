@@ -13,9 +13,9 @@ const colorList = [
 ]; // array literal
 
 const carList = [
-  { id: 1, make: 'Tesla', model: 'Model 3', year: 2019, color: 'Silver', price: 60000 },
-  { id: 2, make: 'Ford', model: 'Model T', year: 1910, color: 'Blue', price: 65000 },
-  { id: 3, make: 'Tesla', model: 'Model Y', year: 2021, color: 'Blue', price: 65000 },
+  { id: 1, make: 'Tesla', model: '3', year: 2019, color: 'Silver', price: 60000 },
+  { id: 2, make: 'Ford', model: 'T', year: 1910, color: 'Blue', price: 10000 },
+  { id: 3, make: 'Tesla', model: 'Y', year: 2021, color: 'Black', price: 65000 },
 ];
 
 render(

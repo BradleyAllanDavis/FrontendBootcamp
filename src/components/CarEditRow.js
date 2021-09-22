@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import { carPropType } from "../prop-types/cars";
 
-export const CarEditRow = ({ car, onSaveCar: saveCar, onCancelCar: cancelCar }) => {
+export const CarEditRow = ({ car, onSaveCar: saveCar, onCancelEdit: cancelEdit }) => {
 
   const [
     carForm,
@@ -25,14 +25,14 @@ export const CarEditRow = ({ car, onSaveCar: saveCar, onCancelCar: cancelCar }) 
 
   return (
     <tr>
-      <td>id</td>
+      <td>{car.id}</td>
       <td><input type='text' id='make-input' name='make' onChange={change} value={carForm.make}/></td>
       <td><input type='text' id='model-input' name='model' onChange={change} value={carForm.model}/></td>
       <td><input type='text' id='year-input' name='year' onChange={change} value={carForm.year}/></td>
       <td><input type='text' id='color-input' name='color' onChange={change} value={carForm.color}/></td>
-      <td><input type='text' id='price-input' name='price' onChange={change} value={carForm.color}/></td>
+      <td><input type='text' id='price-input' name='price' onChange={change} value={carForm.price}/></td>
       <button type="button" onClick={() => null}>Save</button>
-      <button type="button" onClick={() => null}>Cancel</button>
+      <button type="button" onClick={cancelEdit}>Cancel</button>
     </tr>
   );
 };
