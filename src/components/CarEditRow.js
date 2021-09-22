@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 import { carPropType } from "../prop-types/cars";
-import { colorsPropType } from '../prop-types/colors';
 
 export const CarEditRow = ({ car, onSaveCar: saveCar, onCancelCar: cancelCar }) => {
 
