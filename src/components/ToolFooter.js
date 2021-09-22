@@ -1,17 +1,19 @@
 import PropTypes from 'prop-types';
 
-export const ToolFooter = ({ footer }) => {
+export const ToolFooter = ({ companyName }) => {
+
   return (
     <footer>
-      <small>{footer}</small>
+      <small>&copy; {new Date().getFullYear()} {companyName}</small>
     </footer>
   );
+
 };
 
 ToolFooter.defaultProps = {
-  footer: 'The Footer',
+  companyName: 'Company Name Here',
 };
 
-ToolFooter.propTypes = {
-  footer: PropTypes.string.isRequired,
-}
+ToolFooter.propType = {
+  companyName: PropTypes.string.isRequired,
+};

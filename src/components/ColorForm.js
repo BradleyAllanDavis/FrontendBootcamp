@@ -22,7 +22,8 @@ export const ColorForm = ({ buttonText, onSubmitColor }) => {
   const submitColor = () => {
     onSubmitColor({ ...colorForm });
     setColorForm({
-      name: '', hexcode: '',
+      name: '',
+      hexcode: '',
     });
   };
 

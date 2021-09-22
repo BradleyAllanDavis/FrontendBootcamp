@@ -20,10 +20,7 @@ const carList = [
 
 render(
 <>
-  {/* createElement(ColorTool, { colors: colorList}) */}
   <ColorTool colors={colorList} />
   <CarTool cars={carList} />
 </>,
 document.querySelector('#root'));
-
-

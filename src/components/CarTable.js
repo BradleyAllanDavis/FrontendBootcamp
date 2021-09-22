@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import { CarViewRow } from "./CarViewRow";
 import { carsPropType } from "../prop-types/cars";
+import { CarEditRow } from './CarEditRow';
 
-export const CarTable = ({ cars, onDeleteCar: deleteCar }) => {
+export const CarTable = ({ cars, editCarId, onEditCar: editCar, onDeleteCar: deleteCar }) => {
 
   return (
     <>
@@ -19,8 +20,10 @@ export const CarTable = ({ cars, onDeleteCar: deleteCar }) => {
           </tr>
         </thead>
         <tbody>
-          {cars.map(car =>
-            <CarViewRow key={car.id} car={car} buttonText='Delete' onDeleteCar={deleteCar}/>
+          {cars.map((car) =>
+            car.id === editCarId
+            ? <CarEditRow key={car.id} car={car} />
+            : <CarViewRow key={car.id} car={car} buttonText='Delete' onDeleteCar={deleteCar} onEditCar={editCar}/>
           )}
         </tbody>
       </table>
@@ -30,9 +33,12 @@ export const CarTable = ({ cars, onDeleteCar: deleteCar }) => {
 
 CarTable.defaultProps = {
   cars: [],
+  editCarId: -1,
 };
 
 CarTable.propTypes = {
   cars: carsPropType.isRequired,
+  editCarId: PropTypes.string.isRequired,
+  onEditCar:  PropTypes.func.isRequired,
   onDeleteCar: PropTypes.func.isRequired,
 };

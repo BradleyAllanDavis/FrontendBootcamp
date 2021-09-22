@@ -3,7 +3,6 @@ import { ColorForm } from './ColorForm';
 import { ColorList } from './ColorList';
 import { ToolFooter } from './ToolFooter';
 import { ToolHeader } from './ToolHeader';
-import PropTypes from 'prop-types';
 import { colorsPropType } from '../prop-types/colors';
 
 export const ColorTool = ({ colors: initialColors }) => {
@@ -25,7 +24,7 @@ export const ColorTool = ({ colors: initialColors }) => {
       <ToolHeader header='ColorTool'/>
       <ColorList colors={colors}/>
       <ColorForm buttonText='Add Color' onSubmitColor={addColor} />
-      <ToolFooter footer='footer' />
+      <ToolFooter companyName='A Cool Company, Inc.' />
     </>
   );
 };

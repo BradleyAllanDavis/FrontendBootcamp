@@ -3,12 +3,13 @@ import { ToolFooter } from './ToolFooter';
 import { ToolHeader } from './ToolHeader';
 import { CarTable } from './CarTable';
 import { CarForm } from './CarForm';
-import PropTypes from 'prop-types';
 import { carsPropType } from "../prop-types/cars";
 
 export const CarTool = ({ cars: initialCars }) => {
 
   const [ cars, setCars ] = useState([ ...initialCars]);
+
+  const [ editCarId, setEditCarId ] = useState(-1);
   
   const addCar = (newCar) => {
     setCars([
@@ -21,18 +22,16 @@ export const CarTool = ({ cars: initialCars }) => {
   }
 
   const deleteCar = (carId) => {
-    const newCars= cars.filter(c => {
-      return c.id !== carId;
-    });
-    setCars(newCars);
+    setCars(cars.filter(c => c.id !== carId));
   };
 
   return (
     <>
       <ToolHeader header='CarTool'/>
-      <CarTable cars={cars} onDeleteCar={deleteCar}/>
+      <CarTable cars={cars} editCarId={editCarId} onEditCar={setEditCarId}
+        onDeleteCar={deleteCar}/>
       <CarForm buttonText='Add Car' onSubmitCar={addCar}/>
-      <ToolFooter footer='footer' />
+      <ToolFooter companyName='A Cool Company, Inc.' />
     </>
   );
 };
