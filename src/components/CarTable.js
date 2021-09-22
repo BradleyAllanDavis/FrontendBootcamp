@@ -3,7 +3,14 @@ import { CarViewRow } from "./CarViewRow";
 import { carsPropType } from "../prop-types/cars";
 import { CarEditRow } from './CarEditRow';
 
-export const CarTable = ({ cars, editCarId, onEditCar: editCar, onCancelEdit: cancelEdit, onDeleteCar: deleteCar }) => {
+export const CarTable = ({
+  cars,
+  editCarId,
+  onEditCar: editCar,
+  onCancelEdit: cancelEdit,
+  onSaveCar: saveCar,
+  onDeleteCar: deleteCar
+}) => {
 
   return (
     <>
@@ -22,7 +29,7 @@ export const CarTable = ({ cars, editCarId, onEditCar: editCar, onCancelEdit: ca
         <tbody>
           {cars.map((car) =>
             car.id === editCarId
-            ? <CarEditRow key={car.id} car={car} onCancelEdit={cancelEdit}/>
+            ? <CarEditRow key={car.id} car={car} onSaveCar={saveCar} onCancelEdit={cancelEdit}/>
             : <CarViewRow key={car.id} car={car} buttonText='Delete' onDeleteCar={deleteCar} onEditCar={editCar}/>
           )}
         </tbody>

@@ -3,7 +3,11 @@ import { useState } from 'react';
 
 import { carPropType } from "../prop-types/cars";
 
-export const CarEditRow = ({ car, onSaveCar: saveCar, onCancelEdit: cancelEdit }) => {
+export const CarEditRow = ({
+  car,
+  onSaveCar,
+  onCancelEdit: cancelEdit
+}) => {
 
   const [
     carForm,
@@ -23,6 +27,13 @@ export const CarEditRow = ({ car, onSaveCar: saveCar, onCancelEdit: cancelEdit }
     });
   };
 
+  const saveCar = () => {
+    onSaveCar({
+      ...carForm,
+      id: car.id,
+    });
+  };
+
   return (
     <tr>
       <td>{car.id}</td>
@@ -31,7 +42,7 @@ export const CarEditRow = ({ car, onSaveCar: saveCar, onCancelEdit: cancelEdit }
       <td><input type='text' id='year-input' name='year' onChange={change} value={carForm.year}/></td>
       <td><input type='text' id='color-input' name='color' onChange={change} value={carForm.color}/></td>
       <td><input type='text' id='price-input' name='price' onChange={change} value={carForm.price}/></td>
-      <button type="button" onClick={() => null}>Save</button>
+      <button type="button" onClick={saveCar}>Save</button>
       <button type="button" onClick={cancelEdit}>Cancel</button>
     </tr>
   );
