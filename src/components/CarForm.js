@@ -65,4 +65,5 @@ CarForm.defaultProps = {
 
 CarForm.propTypes = {
   buttonText: PropTypes.string.isRequired,
+  onSubmitCar: PropTypes.func.isRequired,
 };

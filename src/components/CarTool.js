@@ -3,10 +3,12 @@ import { ToolFooter } from './ToolFooter';
 import { ToolHeader } from './ToolHeader';
 import { CarTable } from './CarTable';
 import { CarForm } from './CarForm';
+import PropTypes from 'prop-types';
+import { carsPropType } from "../prop-types/cars";
 
-export const CarTool = (props) => {
+export const CarTool = ({ cars: initialCars }) => {
 
-  const [ cars, setCars ] = useState([ ...props.cars]);
+  const [ cars, setCars ] = useState([ ...initialCars]);
   
   const addCar = (newCar) => {
     setCars([
@@ -33,4 +35,12 @@ export const CarTool = (props) => {
       <ToolFooter footer='footer' />
     </>
   );
+};
+
+CarTool.defaultProps = {
+  cars: [],
+};
+
+CarTool.propTypes = {
+  cars: carsPropType.isRequired,
 };

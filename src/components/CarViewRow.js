@@ -1,8 +1,6 @@
-export const CarViewRow = ({ car, onDeleteCar }) => {
+import PropTypes from 'prop-types';
 
-  const deleteCar = () => {
-    onDeleteCar(car.id);
-  }
+export const CarViewRow = ({ car, onDeleteCar: deleteCar }) => {
 
   return (
     <>
@@ -17,4 +15,9 @@ export const CarViewRow = ({ car, onDeleteCar }) => {
       </tr>
     </>
   );
+};
+
+CarViewRow.propTypes = {
+  car: carPropType.isRequired,
+  onDeleteCar: PropTypes.func.isRequired,
 };

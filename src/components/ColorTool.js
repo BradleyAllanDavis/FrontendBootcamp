@@ -3,10 +3,12 @@ import { ColorForm } from './ColorForm';
 import { ColorList } from './ColorList';
 import { ToolFooter } from './ToolFooter';
 import { ToolHeader } from './ToolHeader';
+import PropTypes from 'prop-types';
+import { colorsPropType } from '../prop-types/colors';
 
-export const ColorTool = (props) => {
+export const ColorTool = ({ colors: initialColors }) => {
 
-  const [ colors, setColors ] = useState([ ...props.colors]);
+  const [ colors, setColors ] = useState([ ...initialColors]);
 
   const addColor = (newColor) => {
     setColors([
@@ -26,4 +28,12 @@ export const ColorTool = (props) => {
       <ToolFooter footer='footer' />
     </>
   );
+};
+
+ColorTool.defaultProps = {
+  colors: [],
+};
+
+ColorTool.propTypes = {
+  colors: colorsPropType.isRequired,
 };
