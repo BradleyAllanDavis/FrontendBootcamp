@@ -1,4 +1,5 @@
 import { render } from "react-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import { CarTool } from './components/CarTool';
 import { ColorTool } from "./components/ColorTool";
@@ -10,7 +11,7 @@ const colorList = [
   { id: 4, name: 'purple', hexcode: 'ff00ff' },
   { id: 5, name: 'white', hexcode: 'ffffff' },
   { id: 6, name: 'green', hexcode: '00ff00' },
-]; // array literal
+];
 
 const carList = [
   { id: 1, make: 'Tesla', model: '3', year: 2019, color: 'Silver', price: 47000 },
@@ -22,7 +23,18 @@ const carList = [
 
 render(
 <>
-  <ColorTool colors={colorList} />
-  <CarTool cars={carList} />
-</>,
-document.querySelector('#root'));
+  <Router>
+    <nav>
+      <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/color-tool">ColorTool</Link></li>
+        <li><Link to="/car-tool">CarTool</Link></li>
+      </ul>
+    </nav>
+    <Switch>
+      <Route path="/" exact><h2>Home</h2></Route>
+      <Route path="/color-tool"><ColorTool colors={colorList} /></Route>
+      <Route path="/car-tool"><CarTool cars={carList} /></Route>
+    </Switch>
+  </Router>
+</>, document.querySelector('#root'));
