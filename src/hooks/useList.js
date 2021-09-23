@@ -39,5 +39,5 @@ export const useList = (initialItems) => {
 
   const resetItems = () => setItems(initialItems);
 
-  return [ items, addItem, putItem, patchItem, deleteItem ];
+  return [ items, addItem, putItem, patchItem, deleteItem, setItems ];
 };

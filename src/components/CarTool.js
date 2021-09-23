@@ -36,7 +36,7 @@ export const CarTool = ({ cars: initialCars }) => {
       <ToolHeader header='CarTool'/>
       <CarTable cars={cars} editCarId={editCarId} onEditCar={setEditCarId} onCancelEdit={cancelEdit} onSaveCar={saveCar} onDeleteCar={deleteCar}/>
       <CarForm buttonText='Add Car' onSubmitCar={addCar}/>
-      <ToolFooter companyName='A Cool Company, Inc.' />
+      <ToolFooter companyName='A Car Company, Inc.' />
     </>
   );
 };
