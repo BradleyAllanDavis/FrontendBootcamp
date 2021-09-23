@@ -3,26 +3,46 @@ import { CarViewRow } from "./CarViewRow";
 import { carsPropType } from "../prop-types/cars";
 import { CarEditRow } from './CarEditRow';
 
+const dataCols = [
+  { name: 'id', caption: 'Id' },
+  { name: 'make', caption: 'Make' },
+  { name: 'model', caption: 'Model' },
+  { name: 'year', caption: 'Year' },
+  { name: 'color', caption: 'Color' },
+  { name: 'price', caption: 'Price' },
+];
+
 export const CarTable = ({
   cars,
   editCarId,
+  carsSort: { col, dir },
   onEditCar: editCar,
   onCancelEdit: cancelEdit,
   onSaveCar: saveCar,
-  onDeleteCar: deleteCar
+  onDeleteCar: deleteCar,
+  onSortCars: sortCars,
 }) => {
+
+  const sortArrow = aCol => {
+    if (col === aCol) {
+      return dir === 'asc' ? 'v' : '^';
+    } else {
+      return '';
+    }
+  }
+
+  const SortHeaderCol = ( { col: { name, caption } }) => {
+    return (
+      <th><button type='button' onClick={() => sortCars(name)}>{caption} {sortArrow(name)}</button></th>
+    );
+  };
 
   return (
     <>
       <table>
         <thead>
           <tr>
-            <th>Id</th>
-            <th>Make</th>
-            <th>Model</th>
-            <th>Year</th>
-            <th>Color</th>
-            <th>Price</th>
+            {dataCols.map(dataCol => <SortHeaderCol key={dataCol.id} col={dataCol} />)}
             <th>Actions</th>
           </tr>
         </thead>
@@ -41,11 +61,20 @@ export const CarTable = ({
 CarTable.defaultProps = {
   cars: [],
   editCarId: -1,
+  carsSort: {
+    col: 'id',
+    dir: 'asc',
+  },
 };
 
 CarTable.propTypes = {
   cars: carsPropType.isRequired,
+  carsSort: PropTypes.shape({
+    col: PropTypes.func.isRequired,
+    dir: PropTypes.func.isRequired,
+  }),
   editCarId: PropTypes.string.isRequired,
   onEditCar:  PropTypes.func.isRequired,
   onDeleteCar: PropTypes.func.isRequired,
+  onSortCars: PropTypes.func.isRequired,
 };

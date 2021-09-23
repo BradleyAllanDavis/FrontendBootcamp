@@ -14,7 +14,6 @@ export const ColorTool = ({ colors: initialColors }) => {
   ] = useSortedList([ ...initialColors ]);
 
   const toggleSortColors = () => {
-    console.log(sortInfo)
     const { col: sortCol, dir: sortDir } = sortInfo;
     if (sortCol === 'id') {
       sortOnColumn('name');

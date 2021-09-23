@@ -5,10 +5,15 @@ import { CarTable } from './CarTable';
 import { CarForm } from './CarForm';
 import { carsPropType } from "../prop-types/cars";
 import { useList } from '../hooks/useList'
+import { useSortedList } from '../hooks/useSortedList';
 
 export const CarTool = ({ cars: initialCars }) => {
 
-  const [ cars, appendCar, replaceCar, , removeCar ] = useList([ ...initialCars]);
+  const [
+    cars, sortInfo, 
+    appendCar, replaceCar, , removeCar, 
+    sortOnColumn
+  ] = useSortedList([ ...initialCars ]);
 
   const [ editCarId, setEditCarId ] = useState(-1);
   
@@ -34,7 +39,14 @@ export const CarTool = ({ cars: initialCars }) => {
   return (
     <>
       <ToolHeader header='CarTool'/>
-      <CarTable cars={cars} editCarId={editCarId} onEditCar={setEditCarId} onCancelEdit={cancelEdit} onSaveCar={saveCar} onDeleteCar={deleteCar}/>
+      <CarTable cars={cars}
+        carsSort={sortInfo}
+        editCarId={editCarId}
+        onEditCar={setEditCarId}
+        onCancelEdit={cancelEdit}
+        onSaveCar={saveCar}
+        onDeleteCar={deleteCar}
+        onSortCars={sortOnColumn}/>
       <CarForm buttonText='Add Car' onSubmitCar={addCar}/>
       <ToolFooter companyName='A Car Company, Inc.' />
     </>
