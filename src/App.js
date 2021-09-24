@@ -4,6 +4,7 @@ import './App.css';
 
 import { CarTool } from './components/CarTool';
 import { ColorTool } from "./components/ColorTool";
+import { CarToolStoreProvider } from "./contexts/carToolStoreContext";
 
 const colorList = [
   { id: 1, name: 'blue', hexcode: '0000ff' }, // object literal
@@ -16,7 +17,7 @@ const colorList = [
 
 const carList = [
   { id: 1, make: 'Tesla', model: '3', year: 2019, color: 'Silver', price: 47000 },
-  { id: 2, make: 'Ford', model: 'T', year: 1910, color: 'Blue', price: 10000 },
+  { id: 2, make: 'Ford', model: 'T', year: 1910, color: 'Blue', price: 22000 },
   { id: 3, make: 'Tesla', model: 'Y', year: 2021, color: 'Black', price: 65000 },
   { id: 4, make: 'GM', model: 'Sierra', year: 2005, color: 'White', price: 34000 },
   { id: 5, make: 'Audi', model: 'A4', year: 2013, color: 'Red', price: 52000 },
@@ -38,7 +39,11 @@ export function App() {
       <main id="content">
         <Switch>
           <Route path="/color-tool"><ColorTool colors={colorList} /></Route>
-          <Route path="/car-tool"><CarTool cars={carList} /></Route>
+          <Route path="/car-tool">
+            <CarToolStoreProvider cars={carList}>
+              <CarTool /> {/* children */}
+            </CarToolStoreProvider>
+            </Route>
           <Route path="/" exact><h2>Home</h2></Route>
         </Switch>
       </main>
