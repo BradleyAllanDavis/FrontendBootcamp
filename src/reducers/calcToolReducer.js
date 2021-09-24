@@ -63,7 +63,8 @@ export const calcToolReducer = (state = { result: 0 , history: [] }, action) => 
     case CLEAR_ACTION:
       return {
         ...state,
-        result: 0
+        result: 0,
+        history: [],
       };
     default:
       return state;
