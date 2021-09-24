@@ -1,4 +1,11 @@
-import { ADD_ACTION, SUBTRACT_ACTION, MULTIPLY_ACTION, DIVIDE_ACTION, CLEAR_ACTION } from "../actions/calcActions";
+import {
+  ADD_ACTION,
+  SUBTRACT_ACTION,
+  MULTIPLY_ACTION,
+  DIVIDE_ACTION,
+  CLEAR_ACTION,
+  DELETE_HISTORY_ENTRY_ACTION
+} from "../actions/calcActions";
 
 // Reducer: pure function
 // 1. Only data input comes from parameters
@@ -65,6 +72,13 @@ export const calcToolReducer = (state = { result: 0 , history: [] }, action) => 
         ...state,
         result: 0,
         history: [],
+      };
+    case DELETE_HISTORY_ENTRY_ACTION:
+      return {
+        ...state,
+        result: state.result,
+        history: [...state.history].filter(entry => entry.id !== action.value),
+        // history: [],
       };
     default:
       return state;

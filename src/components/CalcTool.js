@@ -2,12 +2,13 @@ import { useState } from "react";
 
 export const CalcTool = ({
   result,
+  history,
   onAdd: add,
   onSubtract: subtract,
   onMultiply: multiply,
   onDivide: divide,
   onClear: clear,
-  history,
+  onDeleteHistoryEntry: deleteHistoryEntry,
 }) => {
 
   const [ numInput, setNumInput ] = useState(0);
@@ -27,7 +28,7 @@ export const CalcTool = ({
           <button type="button" onClick={() => divide(numInput)}>/</button>
         </fieldset>
         <ul>
-          {history.map(entry => <li>{entry.opName} - {entry.opValue}</li>)}
+          {history.map(entry => <li>{entry.opName} - {entry.opValue}<button type="button" onClick={() => deleteHistoryEntry(entry.id)}>Delete</button></li>)}
         </ul>
       </form>
     </>

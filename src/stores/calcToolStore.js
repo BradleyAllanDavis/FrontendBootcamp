@@ -5,5 +5,3 @@ import { calcToolReducer } from '../reducers/calcToolReducer';
 export const calcToolStore = createStore(
   calcToolReducer,
 );
-
-
