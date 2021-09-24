@@ -10,6 +10,7 @@ import { CalcTool } from '../components/CalcTool';
 export const CalcToolContainer = () => {
 
   const result = useSelector(state => state.result);
+  const history = useSelector(state => state.history);
 
   const actions = bindActionCreators({
     onAdd: createAddAction,
@@ -19,18 +20,6 @@ export const CalcToolContainer = () => {
     onClear: createClearAction,
   }, useDispatch());
 
-  // alternative to above
-  // const dispatch = useDispatch();
-  // // const onAdd = value => dispatch(createAddAction(value));
-  // const onAdd = value => {
-  //   const addAction = createAddAction(value);
-  //   dispatch(addAction);
-  // }
-  // const onSubtract = value => dispatch(createSubtractAction(value));
-  // const actions = {
-  //   onAdd, onSubtract,
-  // };
-
-  return <CalcTool result={result} {...actions} />
+  return <CalcTool result={result} {...actions} history={history}/>;
 
 };

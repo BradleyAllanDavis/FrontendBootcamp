@@ -7,6 +7,7 @@ export const CalcTool = ({
   onMultiply: multiply,
   onDivide: divide,
   onClear: clear,
+  history,
 }) => {
 
   const [ numInput, setNumInput ] = useState(0);
@@ -25,6 +26,9 @@ export const CalcTool = ({
           <button type="button" onClick={() => multiply(numInput)}>*</button>
           <button type="button" onClick={() => divide(numInput)}>/</button>
         </fieldset>
+        <ul>
+          {history.map(entry => <li>{entry.opName} - {entry.opValue}</li>)}
+        </ul>
       </form>
     </>
   );
