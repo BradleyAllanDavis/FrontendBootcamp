@@ -2,7 +2,7 @@ import { bindActionCreators } from 'redux';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
-  createAddAction, createSubtractAction
+  createAddAction, createSubtractAction, createMultiplyAction, createDivideAction, createClearAction,
 } from '../actions/calcActions'; 
 
 import { CalcTool } from '../components/CalcTool';
@@ -13,7 +13,10 @@ export const CalcToolContainer = () => {
 
   const actions = bindActionCreators({
     onAdd: createAddAction,
-    onSubtract:  createSubtractAction,
+    onSubtract: createSubtractAction,
+    onMultiply: createMultiplyAction,
+    onDivide: createDivideAction,
+    onClear: createClearAction,
   }, useDispatch());
 
   // alternative to above

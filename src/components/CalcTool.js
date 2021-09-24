@@ -1,12 +1,19 @@
 import { useState } from "react";
 
-export const CalcTool = ({ result, onAdd: add, onSubtract: subtract }) => {
+export const CalcTool = ({
+  result,
+  onAdd: add,
+  onSubtract: subtract,
+  onMultiply: multiply,
+  onDivide: divide,
+  onClear: clear,
+}) => {
 
   const [ numInput, setNumInput ] = useState(0);
 
   return (
     <>
-      <div>Result: {result} </div>
+      <div>Result: {result} <button type="button" onClick={clear}>Clear</button></div>
       <form>
         <label>
           Num Input: <input type="number" value={numInput} 
@@ -15,6 +22,8 @@ export const CalcTool = ({ result, onAdd: add, onSubtract: subtract }) => {
         <fieldset>
           <button type="button" onClick={() => add(numInput)}>+</button>
           <button type="button" onClick={() => subtract(numInput)}>-</button>
+          <button type="button" onClick={() => multiply(numInput)}>*</button>
+          <button type="button" onClick={() => divide(numInput)}>/</button>
         </fieldset>
       </form>
     </>
