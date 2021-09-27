@@ -5,7 +5,7 @@ import './App.css';
 
 import { calcToolStore } from "./stores/calcToolStore";
 
-import { CalcToolContainer } from "./containers/CalcToolContainer";
+import { CalcTool } from "./components/CalcTool";
 import { CarTool } from './components/CarTool';
 import { ColorTool } from "./components/ColorTool";
 import { CarToolStoreProvider } from "./contexts/carToolStoreContext";
@@ -54,7 +54,7 @@ export function App() {
           </Route>
           <Route path="/calc-tool">
             <Provider store={calcToolStore}>
-              <CalcToolContainer />
+              <CalcTool />
             </Provider>
           </Route>
         </Switch>

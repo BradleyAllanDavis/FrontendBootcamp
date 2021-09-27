@@ -10,10 +10,7 @@ import {
   createDeleteHistoryEntryAction,
 } from '../actions/calcActions'; 
 
-import { CalcTool } from '../components/CalcTool';
-
-// orphaned
-export const CalcToolContainer = () => {
+export const useCalcTool = () => {
 
   const result = useSelector(state => state.result);
   const history = useSelector(state => state.history);
@@ -34,6 +31,11 @@ export const CalcToolContainer = () => {
     onDeleteHistoryEntry: createDeleteHistoryEntryAction,
   }, useDispatch());
 
-  return <CalcTool result={result} history={history} errorMessage={errorMessage} {...actions}/>;
+  return {
+    result,
+    history,
+    errorMessage,
+    ...actions,
+  };
 
-};
+}
