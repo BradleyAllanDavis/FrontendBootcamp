@@ -8,6 +8,7 @@ export const CalcTool = () => {
     result,
     history,
     errorMessage,
+    counts,
     onAdd: add,
     onSubtract: subtract,
     onMultiply: multiply,
@@ -43,6 +44,24 @@ export const CalcTool = () => {
             <button type="button" onClick={() => deleteHistoryEntry(entry.id)}>Delete</button>
           </li>)}
         </ul>
+        <table>
+          <thead>
+            <tr>
+              <th>Add</th>
+              <th>Subtract</th>
+              <th>Multiply</th>
+              <th>Divide</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{counts.ADD}</td>
+              <td>{counts.SUBTRACT}</td>
+              <td>{counts.MULTIPLY}</td>
+              <td>{counts.DIVIDE}</td>
+            </tr>
+          </tbody>
+        </table>
       </form>
     </>
   );

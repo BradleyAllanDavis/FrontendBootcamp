@@ -10,32 +10,6 @@ import {
   SET_ERROR_MESSAGE_ACTION,
 } from "../actions/calcActions";
 
-// Reducer: pure function
-// 1. Only data input comes from parameters
-// 2. Parameters cannot be mutated
-// 3. Function cannot cause a side effect
-// 4. Only result is the return value from the function
-
-export const resultReducer = (result = 0 /* state */, action) => {
-  switch (action.type) {
-    case ADD_ACTION:
-      return result + action.value;
-    case SUBTRACT_ACTION:
-      return result - action.value;
-    case MULTIPLY_ACTION:
-      return result * action.value;
-    case DIVIDE_ACTION:
-      if (action.value === 0) {
-        return result;
-      }
-      return result / action.value;
-    case CLEAR_ACTION:
-      return 0;
-    default:
-      return result;
-  }
-};
-
 export const historyReducer = (history = [], action) => {
   if ([ADD_ACTION, SUBTRACT_ACTION, MULTIPLY_ACTION, DIVIDE_ACTION].includes(action.type)) {
     if (action.type === DIVIDE_ACTION && action.value === 0) {
@@ -75,9 +49,8 @@ export const errorMessageReducer = (errorMessage = "", action) => {
   return "";
 }
 
-// same as above
 export const calcToolReducers = combineReducers({
-  result: resultReducer,
+  // result: resultReducer,
   history: historyReducer,
   errorMessage:  errorMessageReducer,
 });
