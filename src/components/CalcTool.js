@@ -3,6 +3,7 @@ import { useState } from "react";
 export const CalcTool = ({
   result,
   history,
+  errorMessage,
   onAdd: add,
   onSubtract: subtract,
   onMultiply: multiply,
@@ -15,7 +16,11 @@ export const CalcTool = ({
 
   return (
     <>
-      <div>Result: {result} <button type="button" onClick={clear}>Clear</button></div>
+      {errorMessage && <div>{errorMessage}</div>}
+      <div>
+        Result: {result}
+        <button type="button" onClick={clear}>Clear</button>
+      </div>
       <form>
         <label>
           Num Input: <input type="number" value={numInput} 
@@ -28,7 +33,11 @@ export const CalcTool = ({
           <button type="button" onClick={() => divide(numInput)}>/</button>
         </fieldset>
         <ul>
-          {history.map(entry => <li>{entry.opName} - {entry.opValue}<button type="button" onClick={() => deleteHistoryEntry(entry.id)}>Delete</button></li>)}
+          {history.map(entry =>
+          <li>
+            {entry.id} - {entry.opName} - {entry.opValue}
+            <button type="button" onClick={() => deleteHistoryEntry(entry.id)}>Delete</button>
+          </li>)}
         </ul>
       </form>
     </>

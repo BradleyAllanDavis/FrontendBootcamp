@@ -16,6 +16,13 @@ export const CalcToolContainer = () => {
 
   const result = useSelector(state => state.result);
   const history = useSelector(state => state.history);
+  const errorMessage = useSelector(state => {
+    if (state.errorMessage) {
+      return "Error: " + state.errorMessage;
+    } else {
+      return "";
+    }
+  });
 
   const actions = bindActionCreators({
     onAdd: createAddAction,
@@ -26,6 +33,6 @@ export const CalcToolContainer = () => {
     onDeleteHistoryEntry: createDeleteHistoryEntryAction,
   }, useDispatch());
 
-  return <CalcTool result={result} history={history} {...actions}/>;
+  return <CalcTool result={result} history={history} errorMessage={errorMessage} {...actions}/>;
 
 };
