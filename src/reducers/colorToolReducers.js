@@ -1,30 +1,24 @@
 import { combineReducers } from "redux";
 
 import {
-  ADD_ACTION,
+  REFRESH_COLORS_DONE_ACTION,
   DELETE_ACTION,
   SORT_ACTION,
 } from "../actions/colorActions";
 
-const colorList = [
-  { id: 1, name: 'blue', hexcode: '0000ff' },
-  { id: 2, name: 'red', hexcode: 'ff0000' },
-  { id: 3, name: 'black', hexcode: '000000' },
-  { id: 4, name: 'purple', hexcode: 'ff00ff' },
-  { id: 5, name: 'white', hexcode: 'ffffff' },
-  { id: 6, name: 'green', hexcode: '00ff00' },
-];
+// const colorList = [
+//   { id: 1, name: 'blue', hexcode: '0000ff' },
+//   { id: 2, name: 'red', hexcode: 'ff0000' },
+//   { id: 3, name: 'black', hexcode: '000000' },
+//   { id: 4, name: 'purple', hexcode: 'ff00ff' },
+//   { id: 5, name: 'white', hexcode: 'ffffff' },
+//   { id: 6, name: 'green', hexcode: '00ff00' },
+// ];
 
-export const colorReducer = (colors = colorList, action) => {
+export const colorsReducer = (colors = [], action) => {
   switch (action.type) {
-    case ADD_ACTION:
-      return [
-        ...colors,
-        {
-          ...action.color,
-          id: Math.max(...colors.map(c => c.id), 0) + 1,
-        }
-      ];
+    case REFRESH_COLORS_DONE_ACTION:
+      return action.colors;
     case DELETE_ACTION:
       return colors.filter(c => c.id !== action.colorId);
     default:
@@ -47,7 +41,18 @@ export const sortReducer = (sortInfo = { col: 'id', dir: 'asc'}, action) => {
   return sortInfo;
 };
 
+export const isLoadingReducer = (isLoading = false, action) => {
+  if (action.type.endsWith('REQUEST')) {
+    return true;
+  }
+  if (action.type.endsWith('DONE')) {
+    return false;
+  }
+  return isLoading;
+};
+
 export const colorToolReducers = combineReducers({
-  colors: colorReducer,
+  colors: colorsReducer,
   sortInfo: sortReducer,
+  isLoading: isLoadingReducer,
 });

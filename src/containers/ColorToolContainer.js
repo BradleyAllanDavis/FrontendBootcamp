@@ -1,8 +1,13 @@
 import { bindActionCreators } from 'redux';
 import { useSelector, useDispatch } from 'react-redux';
+import { useMemo } from 'react';
+
+import { sortedItemsSelector } from "../selectors/sortedItemsSelector";
+import { toggleSortButtonTextSelector } from "../selectors/toggleSortButtonTextSelector";
 
 import {
-  createAddAction,
+  refreshColors,
+  addColor,
   createDeleteAction,
   createSortAction,
 } from '../actions/colorActions'; 
@@ -11,40 +16,18 @@ import { ColorTool } from '../components/ColorTool';
 
 export const ColorToolContainer = () => {
 
-  const colors = useSelector(state => {
-    const { colors } = state;
-    const { col: sortCol, dir: sortDir } = state.sortInfo;
-    return [ ...colors ].sort((a,b) => {
-      if (a[sortCol] === b[sortCol]) {
-        return 0;
-      } else {
-        if (a[sortCol] < b[sortCol]) {
-          return sortDir === 'asc' ? -1 : 1;
-        } else {
-          return sortDir === 'desc' ? -1 : 1;
-        }
-      }
-    });
-  });
+  const colors = useSelector(sortedItemsSelector("colors", "sortInfo"));
+  const toggleSortButtonText = useSelector(toggleSortButtonTextSelector);
 
-  const toggleSortButtonText = useSelector(state => {
-    const { col: sortCol, dir: sortDir } = state.sortInfo;
-    if (sortCol === 'id') {
-      return "Sorted by Id";
-    } else {
-      if (sortDir === 'asc') {
-        return "Sorted by Name A->Z";
-      } else {
-        return "Sorted by Name Z->A";
-      }
-    }
-  });
+  const dispatch = useDispatch();
 
-  const actions = bindActionCreators({
-    onAddColor: createAddAction,
+  const actions = useMemo(() => bindActionCreators({
+    onRefreshColors: refreshColors,
+    // callback handler : function that returns an action object
+    onAddColor: addColor,
     onDeleteColor: createDeleteAction,
     onSortColors: createSortAction,
-  }, useDispatch());
+  }, dispatch), [dispatch]);
 
   return <ColorTool colors={colors} toggleSortButtonText={toggleSortButtonText} {...actions}/>;
 

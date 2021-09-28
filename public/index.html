@@ -33,15 +33,97 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+    <script>
+      // const delay = () => Math.floor(Math.random() * 1000) + 500;
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+      // class Promise {
+
+      //   constructor(fn) {
+
+      //     this._resolveFns= [];
+
+      //     this._rejectFns= [];
+
+      //     const resolveFn = (result) => {
+      //       this._resolveFns.forEach(fn => fn(result));
+      //     }
+
+      //     const rejectFn = (result) => {
+      //       this._rejectFns.forEach(fn => fn(result));
+      //     }
+
+      //     fn(resolveFn, rejectFn);
+      //   }
+
+      //   // resolves
+      //   then(fn) {
+      //     this._resolveFns.push(fn)
+      //   }
+
+      //   // rejects
+      //   catch(fn) {
+      //     this._rejectFns.push(fn)
+      //   }
+      // }
+
+      // const p = new Promise((resolve, reject) => {
+      //   setTimeout(() => {
+      //     resolve('a');
+      //   }, delay());
+      // });
+
+      // p.then(result => {
+      //   console.log(result);
+      // });
+
+      // console.log('made it here');
+
+      // const getAllColors = async () => {
+      //   const res = await fetch('http://localhost:3060/colors');
+      //   const colors = await res.json();
+      //   return colors;
+      // };
+      // getAllColors().then(colors => console.log(colors));
+
+      // const getOneColor = async (colorId) => {
+      //   const res = await fetch('http://localhost:3060/colors/' + encodeURIComponent(colorId));
+      //   const color = await res.json();
+      //   return color;
+      // }
+      // // getOneColor(1).then(color => console.log(color))
+
+      // const appendColor = async (newColor) => {
+      //   const res = await fetch('http://localhost:3060/colors', {
+      //     method: 'POST',
+      //     headers: {'Content-Type': 'application/json'},
+      //     body: JSON.stringify(newColor),
+      //   });
+      //   const color = await res.json();
+      //   return color;
+      // };
+      // // appendColor({ name: 'purple', hexcode: 'ff00ff' }).then(color => console.log(color));
+
+      // const replaceColor = async (color) => {
+      //   const res = await fetch('http://localhost:3060/colors/' + encodeURIComponent(color.id), {
+      //     method: 'PUT',
+      //     headers: {'Content-Type': 'application/json'},
+      //     body: JSON.stringify(color),
+      //   });
+      //   const updatedColor = await res.json();
+      // };
+      // // replaceColor({ name: 'hello', hexcode: 'ff00ff', id: 14 });
+      // // getAllColors().then(colors => console.log(colors));
+
+      // const deleteColor = async (colorId) => {
+      //   const res = await fetch('http://localhost:3060/colors/' + encodeURIComponent(colorId), {
+      //     method: 'DELETE',
+      //   });
+      //   const color = await res.json();
+      // };
+      // // deleteColor(12);
+
+
+    </script>
   </body>
 </html>
