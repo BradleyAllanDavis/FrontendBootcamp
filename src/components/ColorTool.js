@@ -5,8 +5,6 @@ import { ColorList } from './ColorList';
 import { ToolFooter } from './ToolFooter';
 import { ToolHeader } from './ToolHeader';
 
-import { useColorTool } from '../hooks/useColorTool';
-
 export const ColorTool = ({
   colors,
   toggleSortButtonText,
