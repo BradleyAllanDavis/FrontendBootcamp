@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 
 import {
   REFRESH_COLORS_DONE_ACTION,
-  DELETE_ACTION,
+  // DELETE_ACTION,
   SORT_ACTION,
 } from "../actions/colorActions";
 
@@ -19,8 +19,8 @@ export const colorsReducer = (colors = [], action) => {
   switch (action.type) {
     case REFRESH_COLORS_DONE_ACTION:
       return action.colors;
-    case DELETE_ACTION:
-      return colors.filter(c => c.id !== action.colorId);
+    // case DELETE_ACTION:
+    //   return colors.filter(c => c.id !== action.colorId);
     default:
       return colors;
   }

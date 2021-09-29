@@ -8,7 +8,7 @@ import { toggleSortButtonTextSelector } from "../selectors/toggleSortButtonTextS
 import {
   refreshColors,
   addColor,
-  createDeleteAction,
+  deleteColor,
   createSortAction,
 } from '../actions/colorActions'; 
 
@@ -25,7 +25,7 @@ export const ColorToolContainer = () => {
     onRefreshColors: refreshColors,
     // callback handler : function that returns an action object
     onAddColor: addColor,
-    onDeleteColor: createDeleteAction,
+    onDeleteColor: deleteColor,
     onSortColors: createSortAction,
   }, dispatch), [dispatch]);
 
